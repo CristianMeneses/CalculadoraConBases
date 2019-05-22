@@ -10,10 +10,15 @@ package Logica;
  * @author Estudiantes
  */
 public class Conversor {
-    
-    
-    /* Leer
-    procesar
-    mostar
-    */
+
+    public int BinADec(String text) {
+        int num = Integer.parseInt(text, 2);
+        return num;
+    }
+
+    public String DecABin(String text){
+        int num = Integer.parseInt(text);
+        String bin = Integer.toBinaryString(num);
+        return bin;
+    }
 }

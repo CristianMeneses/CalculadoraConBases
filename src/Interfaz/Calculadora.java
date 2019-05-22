@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Logica.Conversor;
 import Logica.Operaciones;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,10 +23,11 @@ public class Calculadora extends javax.swing.JFrame {
      * Creates new form Calculadora
      */
     String Texto;
-    double a = 0, b = 0;
-    int contar = 0;
-    char operacion, bases = 'd';
+    int a = 0, b = 0;
+    int contar = 0, Resultado;
+    char operacion, bases1 = 'd', bases2 = 'd';
     Operaciones op = new Operaciones();
+    Conversor conv = new Conversor();
     ArrayList<JButton> BHexa = new ArrayList<JButton>();
     ArrayList<JButton> BBina = new ArrayList<JButton>();
     ArrayList<JButton> BDeci = new ArrayList<JButton>();
@@ -84,7 +86,7 @@ public class Calculadora extends javax.swing.JFrame {
         this.setTitle("Calculadora");
         this.setVisible(true);
         this.setResizable(false);
-        this.setLocation(800, 400);
+        this.setLocation(600, 400);
     }
 
     /**
@@ -130,6 +132,7 @@ public class Calculadora extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
 
+        jButtonDividir.setBackground(new java.awt.Color(204, 204, 204));
         jButtonDividir.setText("/");
         jButtonDividir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +140,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
         jButton2.setText("2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +148,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonMultiplicar.setBackground(new java.awt.Color(204, 204, 204));
         jButtonMultiplicar.setText("*");
         jButtonMultiplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +156,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(204, 204, 204));
         jButton3.setText("3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +164,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonSuma.setBackground(new java.awt.Color(204, 204, 204));
         jButtonSuma.setText("+");
         jButtonSuma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +172,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(204, 204, 204));
         jButton4.setText("4");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +180,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonResta.setBackground(new java.awt.Color(204, 204, 204));
         jButtonResta.setText("-");
         jButtonResta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,6 +188,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(204, 204, 204));
         jButton5.setText("5");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +196,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(204, 204, 204));
         jButton6.setText("6");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +204,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(204, 204, 204));
         jButton7.setText("7");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +212,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setBackground(new java.awt.Color(204, 204, 204));
         jButton8.setText("8");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +220,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setBackground(new java.awt.Color(204, 204, 204));
         jButton9.setText("9");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +228,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +236,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton0.setBackground(new java.awt.Color(204, 204, 204));
         jButton0.setText("0");
         jButton0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,13 +244,13 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setForeground(new java.awt.Color(204, 0, 0));
 
-        jLabel1.setBackground(new java.awt.Color(204, 153, 0));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -253,6 +269,7 @@ public class Calculadora extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButtonBorrar.setBackground(new java.awt.Color(204, 204, 204));
         jButtonBorrar.setText("A/C");
         jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +277,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonIgual.setBackground(new java.awt.Color(204, 204, 204));
         jButtonIgual.setText("=");
         jButtonIgual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +314,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonA.setBackground(new java.awt.Color(204, 204, 204));
         jButtonA.setText("A");
         jButtonA.setEnabled(false);
         jButtonA.addActionListener(new java.awt.event.ActionListener() {
@@ -304,6 +323,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonB.setBackground(new java.awt.Color(204, 204, 204));
         jButtonB.setText("B");
         jButtonB.setEnabled(false);
         jButtonB.addActionListener(new java.awt.event.ActionListener() {
@@ -312,6 +332,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonC.setBackground(new java.awt.Color(204, 204, 204));
         jButtonC.setText("C");
         jButtonC.setEnabled(false);
         jButtonC.addActionListener(new java.awt.event.ActionListener() {
@@ -320,6 +341,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonD.setBackground(new java.awt.Color(204, 204, 204));
         jButtonD.setText("D");
         jButtonD.setEnabled(false);
         jButtonD.addActionListener(new java.awt.event.ActionListener() {
@@ -328,6 +350,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonE.setBackground(new java.awt.Color(204, 204, 204));
         jButtonE.setText("E");
         jButtonE.setEnabled(false);
         jButtonE.addActionListener(new java.awt.event.ActionListener() {
@@ -336,6 +359,7 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButtonF.setBackground(new java.awt.Color(204, 204, 204));
         jButtonF.setText("F");
         jButtonF.setEnabled(false);
         jButtonF.addActionListener(new java.awt.event.ActionListener() {
@@ -383,7 +407,7 @@ public class Calculadora extends javax.swing.JFrame {
                                             .addComponent(jButtonE, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButtonF, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jButton7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -392,26 +416,26 @@ public class Calculadora extends javax.swing.JFrame {
                                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButtonBorrar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jButtonDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jButtonMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButtonSuma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                            .addComponent(jButtonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioBinario)
                             .addComponent(jRadioHexa)
                             .addComponent(jRadioDecimal)
-                            .addComponent(jRadioOctal))))
+                            .addComponent(jRadioOctal))
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -420,8 +444,11 @@ public class Calculadora extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jRadioDecimal)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -455,24 +482,22 @@ public class Calculadora extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButtonDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButtonMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jRadioBinario))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButtonSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jRadioOctal))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButtonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jRadioHexa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jRadioDecimal)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonResta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonDividir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonMultiplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioBinario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonSuma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioOctal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioHexa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -503,7 +528,9 @@ public class Calculadora extends javax.swing.JFrame {
             if (contar == 0) {
                 operacion = 'd';
                 contar++;
-                a = Double.parseDouble(jLabel1.getText());
+                if (a == 0) {
+                    a = Integer.parseInt(jLabel1.getText());
+                }
                 jLabel1.setText("");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Deberia presionar \" = \" ");
@@ -520,7 +547,9 @@ public class Calculadora extends javax.swing.JFrame {
             if (contar == 0) {
                 operacion = 'm';
                 contar++;
-                a = Double.parseDouble(jLabel1.getText());
+                if (a == 0) {
+                    a = Integer.parseInt(jLabel1.getText());
+                }
                 jLabel1.setText("");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Deberia presionar \" = \" ");
@@ -537,7 +566,9 @@ public class Calculadora extends javax.swing.JFrame {
             if (contar == 0) {
                 operacion = 's';
                 contar++;
-                a = Double.parseDouble(jLabel1.getText());
+                if (a == 0) {
+                    a = Integer.parseInt(jLabel1.getText());
+                }
                 jLabel1.setText("");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Deberia presionar \" = \" ");
@@ -553,7 +584,9 @@ public class Calculadora extends javax.swing.JFrame {
             if (contar == 0) {
                 operacion = 'r';
                 contar++;
-                a = Double.parseDouble(jLabel1.getText());
+                if (a == 0) {
+                    a = Integer.parseInt(jLabel1.getText());
+                }
                 jLabel1.setText("");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Deberia presionar \" = \" ");
@@ -672,35 +705,49 @@ public class Calculadora extends javax.swing.JFrame {
     private void jButtonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIgualActionPerformed
         // TODO add your handling code here:
         if (jLabel1.getText() == "") {
-
             JOptionPane.showMessageDialog(rootPane, "Deberias introducir algún numero");
         } else if (contar == 0) {
-            a = Double.parseDouble(jLabel1.getText());
-            Texto = "A";
+            a = Integer.parseInt(jLabel1.getText());
         } else {
             contar = 0;
-            b = Double.parseDouble(jLabel1.getText());
+            switch (bases1) {
+                case 'd':
+                    b = Integer.parseInt(jLabel1.getText());
+                    break;
+                case 'b':
+                    Texto = jLabel1.getText();
+                    b = conv.BinADec(Texto);
+                    break;
+            }
             switch (operacion) {
-
                 case 's':
-                    jLabel1.setText(Double.toString(op.suma(a, b)));
+                    System.out.println("a: " + a + " b: " + b);
+                    Resultado = op.suma(a, b);
                     break;
                 case 'r':
-                    jLabel1.setText(Double.toString(op.resta(a, b)));
+                    jLabel1.setText(Integer.toString(op.resta(a, b)));
                     break;
                 case 'm':
-                    jLabel1.setText(Double.toString(op.multiplicacion(a, b)));
+                    jLabel1.setText(Integer.toString(op.multiplicacion(a, b)));
                     break;
                 case 'd':
                     if (b == 0) {
                         JOptionPane.showMessageDialog(rootPane, "El divisor no puede ser cero");
                     } else {
-                        jLabel1.setText(Double.toString(op.division(a, b)));
+                        jLabel1.setText(Integer.toString(op.division(a, b)));
                     }
                     break;
 
                 default:
                     JOptionPane.showMessageDialog(rootPane, "Deberias elegir una operación");
+                    break;
+            }
+            switch(bases1){
+                case 'd':
+                    jLabel1.setText(Integer.toString(Resultado));
+                    break;
+                case 'b':
+                    jLabel1.setText(conv.DecABin(Integer.toString(Resultado)));
                     break;
             }
         }
@@ -709,6 +756,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jRadioDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioDecimalActionPerformed
         // TODO add your handling code here:
+
         for (Iterator<JButton> iterator = BHexa.iterator(); iterator.hasNext();) {
             JButton next = iterator.next();
             next.setEnabled(false);
@@ -717,15 +765,18 @@ public class Calculadora extends javax.swing.JFrame {
             JButton next = iterator.next();
             next.setEnabled(true);
         }
-/*
+
         if (jLabel1.getText() != "") {
-            switch (bases) {
+            switch (bases1) {
                 case 'b':
-                     a= Double.parseDoule(j, 2);
+                    a = conv.BinADec(jLabel1.getText());
+                    jLabel1.setText(Integer.toString(a));
                     break;
             }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Deberías introducir un numero");
         }
-*/
+        bases1 = 'd';
     }//GEN-LAST:event_jRadioDecimalActionPerformed
 
     private void jButtonAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAActionPerformed
@@ -766,6 +817,18 @@ public class Calculadora extends javax.swing.JFrame {
             JButton next = iterator.next();
             next.setEnabled(true);
         }
+        if (jLabel1.getText() != "") {
+            switch (bases1) {
+                case 'd':
+                    Texto = conv.DecABin(jLabel1.getText());
+                    jLabel1.setText(Texto);
+                    a = conv.BinADec(Texto);
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Deberías introducir un numero");
+        }
+        bases1 = 'b';
     }//GEN-LAST:event_jRadioBinarioActionPerformed
 
     private void jRadioHexaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioHexaActionPerformed

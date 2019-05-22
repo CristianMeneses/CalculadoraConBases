@@ -10,16 +10,16 @@ package Logica;
  * @author Cristian
  */
 public class Operaciones {
-    public double suma(double a, double b){
+    public int suma(int a, int b){
         return a+b;
     }
-    public double resta(double a, double b){
+    public int resta(int a, int b){
         return a-b;
     }
-    public double division(double a, double b){
+    public int division(int a, int b){
         return a/b;
     }
-    public double multiplicacion(double a, double b){
+    public int multiplicacion(int a, int b){
         return a*b;
     }
 }
